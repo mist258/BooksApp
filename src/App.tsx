@@ -1,14 +1,13 @@
+import { Books } from "./Components"
 
-
-const App = () => {
+export const App = () => {
 
   return (
     
       <div>
-       
+       <Books/>
       </div>
   
   )
 }
 
-export default App
