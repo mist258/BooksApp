@@ -1,0 +1,9 @@
+.Book {
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #fff8e7;
+    font-family: "Georgia", serif;
+}

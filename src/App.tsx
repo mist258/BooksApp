@@ -1,11 +1,11 @@
-import { Books } from "./Components"
+import { BooksApp } from "./Components"
 
 export const App = () => {
 
   return (
     
       <div>
-       <Books/>
+       <BooksApp/>
       </div>
   
   )
