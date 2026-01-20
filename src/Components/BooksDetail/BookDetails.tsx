@@ -12,7 +12,14 @@ export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
 
   return (
     <div>
-      <img src={book.imgUrl} alt={book.name} />
+      <img
+        src={book.imgUrl}
+        alt={book.name}
+        onError={(e) => {
+          e.currentTarget.src =
+            "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
+        }}
+      />
       <h2>{book.name}</h2>
       <p>Author: {book.author}</p>
       <p>Genre: {book.genre}</p>

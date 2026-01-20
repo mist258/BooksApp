@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import type { IBook } from "../../interfaces/bookInterfaces";
-import {Grid, Box } from "@mui/material";
-
+import { Grid, Box } from "@mui/material";
 
 interface BookProps {
   item: IBook;
@@ -19,7 +18,7 @@ export const Book: FC<BookProps> = ({ item, onSelect }) => {
           alt={name}
           onError={(e) => {
             e.currentTarget.src =
-              "https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500";
+              "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
           }}
         />
         <p>{rating}</p>
