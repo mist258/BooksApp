@@ -1,57 +1,89 @@
 import type { FC } from "react";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Rating,
+  Button,
+  Grid,
+  styled,
+} from "@mui/material";
 import type { IBook } from "../../interfaces/bookInterfaces";
-import { Grid, Box, Paper } from "@mui/material";
-import { styled } from "@mui/material/styles";
 
 interface BookProps {
   item: IBook;
   onSelect: (id: string) => void;
 }
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: (theme.vars ?? theme).palette.text.secondary,
-  ...theme.applyStyles("dark", {
-    backgroundColor: "#1A2027",
-  }),
+const ItemCard = styled(Card)(({ theme }) => ({
+  width: "100%",
+  maxWidth: 400,
+  margin: "auto",
+  borderRadius: theme.shape.borderRadius,
+  transition: "transform 0.2s, box-shadow 0.2s",
+  "&:hover": {
+    transform: "translateY(-4px)",
+    boxShadow: theme.shadows[6],
+  },
 }));
 
 export const Book: FC<BookProps> = ({ item, onSelect }) => {
   const { name, author, imgUrl, rating } = item;
 
   return (
-    <>
-      <Box>
-        <Grid>
-          <img
-            src={imgUrl}
-            alt={name}
-            onError={(e) => {
-              e.currentTarget.src =
-                "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
-            }}
-          />
-        </Grid>
+    <ItemCard>
+      <CardContent>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12 }}>
+            <Box
+              sx={{
+                width: "100%",
+                height: 350,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                overflow: "hidden",
+                borderRadius: 1,
+              }}
+            >
+              <img
+                src={
+                  imgUrl ||
+                  "https://www.flaggingdirect.com/images/No-Image-Placeholder.png"
+                }
+                alt={name}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
+            </Box>
+          </Grid>
 
-        <Grid>
-          <Item>{rating}</Item>
-        </Grid>
+          <Grid size={{ xs: 12 }}>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Rating value={rating} readOnly precision={0.5} size="small" />
+              <Typography variant="body2">{rating}</Typography>
+            </Box>
+          </Grid>
 
-        <Grid>
-          <Item>{name}</Item>
-        </Grid>
+          <Grid size={{ xs: 12 }}>
+            <Typography variant="body2" color="text.secondary">
+              {author}
+            </Typography>
+          </Grid>
 
-        <Grid>
-          <Item>{author}</Item>
-        </Grid>
+          <Grid size={{ xs: 12 }}>
+            <Typography variant="h6" fontWeight="bold">
+              {name}
+            </Typography>
+          </Grid>
 
-        <Grid>
-          <button onClick={() => onSelect(item.id)}>Next</button>
+          <Grid size={{ xs: 12 }} display="flex" justifyContent="center">
+            <Button variant="contained" onClick={() => onSelect(item.id)}>
+              Book details
+            </Button>
+          </Grid>
         </Grid>
-      </Box>
-    </>
+      </CardContent>
+    </ItemCard>
   );
 };

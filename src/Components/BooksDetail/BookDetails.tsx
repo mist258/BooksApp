@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
+import Rating from "@mui/material/Rating";
 
 interface BookDetailsProps {
   book: IBook;
@@ -64,11 +65,19 @@ export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Item>Rating: {book.rating}</Item>
+            <Item>Description: {book.description}</Item>
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Item>Description: {book.description}</Item>
+            <Box display={"flex"} alignItems={"center"}>
+              <Rating
+                name="read-only"
+                value={book.rating}
+                readOnly
+                precision={0.5}
+              />
+              <Box sx={{ ml: 2 }}>{book.rating}</Box>
+            </Box>
           </Grid>
 
           <Grid size={{ xs: 12 }}>

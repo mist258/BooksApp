@@ -97,7 +97,7 @@ export const listOfBooks: IBook[] = [
     name: "Harry Potter and the Philosopher's Stone",
     author: "J.K. Rowling",
     imgUrl:
-      "https://pbs.twimg.com/media/FpmyRJ2XwAAACsN?format=png&name=900x900",
+      "https://tsp-books.com/wp-content/themes/books/site_cache/9781408855898.jpeg",
     genre: "Fantasy",
     rating: 4,
     description: "Harry discovers he is a wizard and attends Hogwarts.",
@@ -108,7 +108,7 @@ export const listOfBooks: IBook[] = [
     name: "Harry Potter and the Chamber of Secrets",
     author: "J.K. Rowling",
     imgUrl:
-      "https://listeningbooks.s3.eu-west-2.amazonaws.com/public/books/1000x0/11121.jpg",
+      "https://shop.dinternal-education.ua/store-uploads/products/product/2021/07/14/9781408855669.jpg",
     genre: "Fantasy",
     rating: 5,
     description: "Harry faces the mystery of the Chamber of Secrets.",
@@ -141,7 +141,7 @@ export const listOfBooks: IBook[] = [
     name: "Harry Potter and the Order of the Phoenix",
     author: "J.K. Rowling",
     imgUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGjUWGOyG6_CjTyJhDRlgrJdQWOxyaGGHAQ&s",
+      "https://tsp-books.com/wp-content/themes/books/site_cache/9781408855690.jpeg",
     genre: "Fantasy",
     rating: 4.6,
     description: "Harry battles the Ministry and the rise of Voldemort.",
