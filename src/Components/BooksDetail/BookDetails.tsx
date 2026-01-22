@@ -19,16 +19,12 @@ interface BookDetailsProps {
 export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
   const [isRead, setIsRead] = useState(book.isRead);
 
-  const imageUrl =
-    book.imgUrl && book.imgUrl.trim() !== ""
-      ? book.imgUrl
-      : "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
-
+  
   return (
     <Grid container spacing={3}>
       <Grid size={{ xs: 12, md: 4 }}>
         <img
-          src={imageUrl}
+          src={book.imgUrl}
           alt={book.name}
           style={{
             width: "100%",
