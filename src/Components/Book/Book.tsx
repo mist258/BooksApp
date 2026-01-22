@@ -29,6 +29,11 @@ const ItemCard = styled(Card)(({ theme }) => ({
 export const Book: FC<BookProps> = ({ item, onSelect }) => {
   const { name, author, imgUrl, rating } = item;
 
+  const imageUrl =
+    imgUrl && imgUrl.trim() !== ""
+      ? imgUrl
+      : "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
+
   return (
     <ItemCard>
       <CardContent>
@@ -47,7 +52,7 @@ export const Book: FC<BookProps> = ({ item, onSelect }) => {
             >
               <img
                 src={
-                  imgUrl ||
+                  imageUrl ||
                   "https://www.flaggingdirect.com/images/No-Image-Placeholder.png"
                 }
                 alt={name}
