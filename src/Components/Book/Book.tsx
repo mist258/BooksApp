@@ -20,8 +20,6 @@ const ItemCard = styled(Card)(({ theme }) => ({
   width: "100%",
   maxWidth: 400,
   margin: "auto",
-  borderRadius: theme.shape.borderRadius,
-  transition: "transform 0.2s, box-shadow 0.2s",
   "&:hover": {
     transform: "translateY(-4px)",
     boxShadow: theme.shadows[6],

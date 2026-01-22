@@ -1,27 +1,20 @@
 import type { IBook } from "../../interfaces/bookInterfaces";
 import type { FC } from "react";
 import { useState } from "react";
-import { Grid, Paper, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Button from "@mui/material/Button";
-import Rating from "@mui/material/Rating";
+import {
+  Rating,
+  Button,
+  Grid,
+  Box,
+  FormControlLabel,
+  Checkbox,
+  Typography,
+} from "@mui/material";
 
 interface BookDetailsProps {
   book: IBook;
   onBack: () => void;
 }
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: (theme.vars ?? theme).palette.text.secondary,
-  ...theme.applyStyles("dark", {
-    backgroundColor: "#1A2027",
-  }),
-}));
 
 export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
   const [isRead, setIsRead] = useState(book.isRead);
@@ -29,47 +22,64 @@ export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
   return (
     <Grid container spacing={3}>
       <Grid size={{ xs: 12, md: 4 }}>
-        <Box>
-          <img
-            src={book.imgUrl}
-            alt={book.name}
-            style={{
-              width: "100%",
-              maxHeight: "auto",
-              objectFit: "contain",
-            }}
-            onError={(e) => {
-              e.currentTarget.src =
-                "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
-            }}
-          />
+        <img
+          src={book.imgUrl}
+          alt={book.name}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "contain",
+            borderRadius: 4,
+          }}
+          onError={(e) => {
+            e.currentTarget.src =
+              "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
+          }}
+        />
 
-          <Button variant="contained" onClick={onBack} sx={{ mt: 2 }} fullWidth>
-            Return to list
-          </Button>
-        </Box>
+        <Button variant="contained" onClick={onBack} sx={{ mt: 2 }} fullWidth>
+          Return to list
+        </Button>
       </Grid>
 
       <Grid size={{ xs: 12, md: 8 }}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12 }}>
-            <Item>{book.name}</Item>
+            <Typography variant="h5" fontWeight="bold">
+              {book.name}
+            </Typography>
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Item>Author: {book.author}</Item>
+            <Typography variant="h5" fontWeight="bold">
+              Author:
+            </Typography>
+
+            <Typography variant="h6" fontWeight="regular">
+              {book.author}
+            </Typography>
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Item>Genre: {book.genre}</Item>
+            <Typography variant="h5" fontWeight="bold">
+              Genre:
+            </Typography>
+            <Typography variant="h6" fontWeight="regular">
+              {book.genre}
+            </Typography>
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Item>Description: {book.description}</Item>
+            <Typography variant="h5" fontWeight="bold">
+              Description:
+            </Typography>
+            <Typography variant="h6" fontWeight="regular">
+              {book.description}
+            </Typography>
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Box display={"flex"} alignItems={"center"}>
+            <Box display="flex" alignItems="center">
               <Rating
                 name="read-only"
                 value={book.rating}
@@ -80,7 +90,7 @@ export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
             </Box>
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          <Grid>
             <FormControlLabel
               control={
                 <Checkbox

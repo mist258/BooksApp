@@ -3,8 +3,14 @@ import type { IBook } from "../../interfaces/bookInterfaces";
 import { Books } from "../Books/Books";
 import { listOfBooks } from "../../Data/BooksData";
 import { BookDetails } from "../BooksDetail/BookDetails";
-import { Container, Box, Grid, Button } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import {
+  Container,
+  Box,
+  Grid,
+  Button,
+  Typography,
+  TextField,
+} from "@mui/material";
 
 type NewBook = Omit<IBook, "id">;
 
@@ -54,7 +60,8 @@ export const BooksApp = () => {
 
     setNewBook((prev) => ({
       ...prev,
-      [name]: name === "rating" ? Number(value) : value,
+      [name]:
+        name === "rating" ? Math.min(Math.max(Number(value), 0), 5) : value,
     }));
   };
 
@@ -77,21 +84,37 @@ export const BooksApp = () => {
         <>
           <Box mb={4}>
             <Grid container spacing={2}>
+              <Typography variant="subtitle1" fontWeight="bold" mb={1}>
+                Books filtering
+              </Typography>
               <Grid size={12}>
                 <TextField
                   fullWidth
                   label="Filter by id, name, author"
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
+                <Typography variant="subtitle1" fontWeight="bold" mb={1}>
+                  Add new book to list
+                </Typography>
                 <TextField
                   fullWidth
                   label="Name"
                   name="name"
                   value={newBook.name}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
@@ -101,6 +124,11 @@ export const BooksApp = () => {
                   name="author"
                   value={newBook.author}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
@@ -110,6 +138,11 @@ export const BooksApp = () => {
                   name="genre"
                   value={newBook.genre}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
@@ -120,6 +153,11 @@ export const BooksApp = () => {
                   name="rating"
                   value={newBook.rating || ""}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
@@ -129,6 +167,11 @@ export const BooksApp = () => {
                   name="imgUrl"
                   value={newBook.imgUrl}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
@@ -140,6 +183,11 @@ export const BooksApp = () => {
                   rows={4}
                   value={newBook.description}
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "secondary.main",
+                    },
+                  }}
                 />
               </Grid>
               <Grid size={12}>
