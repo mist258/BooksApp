@@ -10,6 +10,7 @@ import {
   styled,
 } from "@mui/material";
 import type { IBook } from "../../interfaces/bookInterfaces";
+import { useState } from "react";
 
 interface BookProps {
   item: IBook;
@@ -28,7 +29,14 @@ const ItemCard = styled(Card)(({ theme }) => ({
 
 export const Book: FC<BookProps> = ({ item, onSelect }) => {
   const { name, author, imgUrl, rating } = item;
-  
+
+  const [imageError, setImageError] = useState(false);
+
+  const placeholderUrl =
+    "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
+
+  const shouldShowPlaceholder = !imgUrl || imageError;
+
   return (
     <ItemCard>
       <CardContent>
@@ -46,12 +54,10 @@ export const Book: FC<BookProps> = ({ item, onSelect }) => {
               }}
             >
               <img
-                src={
-                  imgUrl ||
-                  "https://www.flaggingdirect.com/images/No-Image-Placeholder.png"
-                }
+                src={shouldShowPlaceholder ? placeholderUrl : imgUrl}
                 alt={name}
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                onError={() => setImageError(true)}
               />
             </Box>
           </Grid>

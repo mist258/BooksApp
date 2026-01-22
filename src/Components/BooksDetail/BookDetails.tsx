@@ -19,12 +19,18 @@ interface BookDetailsProps {
 export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
   const [isRead, setIsRead] = useState(book.isRead);
 
-  
+  const [imageError, setImageError] = useState(false);
+
+  const placeholderUrl =
+    "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
+
+  const shouldShowPlaceholder = !book.imgUrl || imageError;
+
   return (
     <Grid container spacing={3}>
       <Grid size={{ xs: 12, md: 4 }}>
         <img
-          src={book.imgUrl}
+          src={shouldShowPlaceholder ? placeholderUrl : book.imgUrl}
           alt={book.name}
           style={{
             width: "100%",
@@ -32,10 +38,7 @@ export const BookDetails: FC<BookDetailsProps> = ({ book, onBack }) => {
             objectFit: "contain",
             borderRadius: 4,
           }}
-          onError={(e) => {
-            e.currentTarget.src =
-              "https://www.flaggingdirect.com/images/No-Image-Placeholder.png";
-          }}
+          onError={() => setImageError(true)}
         />
 
         <Button variant="contained" onClick={onBack} sx={{ mt: 2 }} fullWidth>
